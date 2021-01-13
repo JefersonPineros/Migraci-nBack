@@ -2,7 +2,6 @@ package com.skillexBack.app.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -14,11 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "productos")
@@ -42,6 +41,7 @@ public class Productos implements Serializable {
 	@Column(name = "fecha_ingreso")
 	private Date fechaIngreso;
 	
+	@JsonManagedReference
 	@OneToOne(mappedBy = "producto", fetch = FetchType.LAZY)
     private DetalleProducto destalleProducto;
 
