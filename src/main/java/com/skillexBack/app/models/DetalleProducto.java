@@ -37,7 +37,7 @@ public class DetalleProducto implements Serializable {
 
 	@JsonBackReference
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(referencedColumnName = "id_productos", name = "productos_id_productos")
+	@JoinColumn(name = "productos_id_productos", referencedColumnName = "id_productos")
 	private Productos producto;
 	
 	

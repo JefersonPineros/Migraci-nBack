@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -60,6 +61,7 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "inventario_idInventario", referencedColumnName = "id_inventario")
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Inventario inventario;
+
 
 	public Integer getIdUsuarios() {
 		return idUsuarios;
@@ -157,6 +159,8 @@ public class Usuario implements Serializable {
 	public void setInventario_idInventario(Integer inventario_idInventario) {
 		this.inventario_idInventario = inventario_idInventario;
 	}
+	
+	
 
 	public Usuario(Integer idUsuarios, String nombreUsuario, String apellidoUsuario, String emailUsuario,
 			String passwordUsuario, String tienda, Date creacion_usuario, String fecha_login, String turnos_laborales,
@@ -177,6 +181,7 @@ public class Usuario implements Serializable {
 		this.inventario_idInventario = inventario_idInventario;
 		this.tipoUsuario = tipoUsuario;
 		this.inventario = inventario;
+
 	}
 
 	public Usuario() {

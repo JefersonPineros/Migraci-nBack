@@ -2,6 +2,7 @@ package com.skillexBack.app.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -54,6 +56,10 @@ public class Productos implements Serializable {
 	@JoinColumn(referencedColumnName = "id_inventario", name = "inventario_id_inventario")
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	private Inventario inventario;
+	
+	@JsonBackReference
+	@OneToMany(mappedBy = "productosIdProductos", fetch = FetchType.LAZY)
+	private List<PedidosHasProductos> pedidoProducto;
 	
 	public Productos() {
 		super();
