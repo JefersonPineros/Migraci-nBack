@@ -2,6 +2,7 @@ package com.skillexBack.app.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -61,7 +63,9 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "inventario_idInventario", referencedColumnName = "id_inventario")
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Inventario inventario;
-
+	
+	@ManyToMany(mappedBy = "usuarios")
+	private List<UsuarioEvento> usuarioEvento;
 
 	public Integer getIdUsuarios() {
 		return idUsuarios;
@@ -160,12 +164,24 @@ public class Usuario implements Serializable {
 		this.inventario_idInventario = inventario_idInventario;
 	}
 	
-	
+
+	public List<UsuarioEvento> getUsuarioEvento() {
+		return usuarioEvento;
+	}
+
+	public void setUsuarioEvento(List<UsuarioEvento> usuarioEvento) {
+		this.usuarioEvento = usuarioEvento;
+	}
+
+
+	public Usuario() {
+		super();
+	}
 
 	public Usuario(Integer idUsuarios, String nombreUsuario, String apellidoUsuario, String emailUsuario,
 			String passwordUsuario, String tienda, Date creacion_usuario, String fecha_login, String turnos_laborales,
 			String cedula_ciudadania, Integer tipoUsuario_idTipoUsuario, Integer inventario_idInventario,
-			TipoUsuario tipoUsuario, Inventario inventario) {
+			TipoUsuario tipoUsuario, Inventario inventario, List<UsuarioEvento> usuarioEvento) {
 		super();
 		this.idUsuarios = idUsuarios;
 		this.nombreUsuario = nombreUsuario;
@@ -181,13 +197,10 @@ public class Usuario implements Serializable {
 		this.inventario_idInventario = inventario_idInventario;
 		this.tipoUsuario = tipoUsuario;
 		this.inventario = inventario;
-
+		this.usuarioEvento = usuarioEvento;
 	}
 
-	public Usuario() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 
 	/**
 	 * 

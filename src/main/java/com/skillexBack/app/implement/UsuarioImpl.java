@@ -50,8 +50,8 @@ public class UsuarioImpl implements IUsuarioDao {
 
 	@Override
 	@Transactional
-	public void updateUsuario(Usuario usuario) {
-		this.usuarioRep.save(usuario);
+	public Usuario updateUsuario(Usuario usuario) {
+		return this.usuarioRep.save(usuario);
 	}
 
 }

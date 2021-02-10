@@ -9,5 +9,5 @@ public interface IUsuarioDao {
 	public Usuario  crearUsuario(Usuario usuario);
 	public Usuario findById(Integer id);
 	public void deleteById(Integer id);
-	public void updateUsuario(Usuario usuario);
+	public Usuario updateUsuario(Usuario usuario);
 }
